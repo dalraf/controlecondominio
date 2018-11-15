@@ -4,8 +4,10 @@ from django.shortcuts import render
 
 
 from django.http import HttpResponse
-import datetime
+from django.contrib.auth.decorators import login_required
 
+
+@login_required
 def index(request):
     html = "<html><body>Hello World</body></html>"
     return HttpResponse(html)

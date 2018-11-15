@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Controle de condomínio</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/sandstone/bootstrap.min.css" rel="stylesheet" integrity="sha384-G3G7OsJCbOk1USkOY4RfeX1z27YaWrZ1YuaQ5tbuawed9IoreRDpWpTkZLXQfPm3"
+        crossorigin="anonymous">
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+
+</head>
+<style>
+    select.input-sm {
+        width: 150px;
+    }
+    input[type=number] {
+        width: 150px;
+    }
+    input[type=text] {
+        width: 300px;
+    }
+    input[type=password] {
+        width: 300px;
+    }
+    #id_numcpfcnpj {
+        width: 150px;
+    }
+    #id_vencimento {
+        width: 100px;
+    }
+    #id_datareferencia {
+        width: 100px;
+    }
+</style>
+
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbargiap">
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span> 
+                            </button>
+                <a class="navbar-brand" href="{% url 'index' %}">Controle</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbargiap">
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    {% if user.is_authenticated %}
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Cadastro<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="">Controle</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Processamento<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'listarsisbrcsv' %}">Importação SISBR</a></li>
+                            <li><a href="{% url 'sisbrprocessalist' %}">Erros de importação</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Usuário: {{ user.get_username }}</a></li>
+                    <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                </ul>
+                {% endif %}
+            </div>
+        </nav>
+        <hr/> {% block content %} {% endblock %}
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
+        crossorigin="anonymous"></script>
+</body>
+<script>
+    $(document).ready(function () {
+        $.datepicker.setDefaults({
+            showOn: "focus",
+            dateFormat: "dd/mm/yy",
+            dayNames: ["Domingo", "Segunda", "Terça", "Quarte", "Quinta", "Sexta", "Sábado"],
+            dayNamesMin: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
+            monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+        })
+        $('#id_vencimento').datepicker();
+        $('#id_datareferencia').datepicker();
+        if ($('#id_tipodepessoa').val() == '0') {
+            $("#id_numcpfcnpj").mask('000.000.000-00', { reverse: true });
+        }
+        if ($('#id_tipodepessoa').val() == '1') {
+            $("#id_numcpfcnpj").mask('00.000.000/0000-00', { reverse: true });
+        }
+    });
+    $('#id_tipodepessoa').change(function () {
+        if ($(this).val() == '0') {
+            $("#id_numcpfcnpj").mask('000.000.000-00', { reverse: true });
+        }
+        if ($(this).val() == '1') {
+            $("#id_numcpfcnpj").mask('00.000.000/0000-00', { reverse: true });
+        }
+    });
+</script>
+
+</html>
