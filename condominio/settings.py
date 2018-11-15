@@ -126,7 +126,7 @@ MEDIA_URL = '/media/'
 
 LOGIN_URL = '/controle/login/'
 LOGOUT_URL = '/controle/logout/'
-LOGOUT_REDIRECT_URL = '/controle/login/'
+LOGOUT_REDIRECT_URL = '/controle/'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 django_heroku.settings(locals())

@@ -9,5 +9,4 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def index(request):
-    html = "<html><body>Hello World</body></html>"
-    return HttpResponse(html)
+    return render(request, 'index.html',)
