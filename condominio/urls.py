@@ -18,6 +18,7 @@ from django.urls import path, include, re_path
 
 
 urlpatterns = [
+    path('', include('controlecondominio.urls')),
     path('admin/', admin.site.urls),
     path('controle/', include('controlecondominio.urls')),
 ]
