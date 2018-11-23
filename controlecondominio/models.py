@@ -26,7 +26,6 @@ MESES = [
 
 
 class prestacao(models.Model):
-    id = models.AutoField(primary_key=True)
     ano = models.IntegerField('Ano', choices=ANOS, default=1)
     mes = models.IntegerField('Mês', choices=MESES, default=18)
 
@@ -39,3 +38,10 @@ class prestacao(models.Model):
     def __unicode__(self):
         return str(self.get_ano_display()) + " de " + str(self.get_mes_display())
 
+
+class lancamentos(models.Model):
+    prestacao = models.ForeignKey('prestacao', verbose_name='prestacao', on_delete=models.CASCADE)
+    descricao = models.CharField('Descrição', max_length=50,)
+    valormoeda = models.DecimalField('Valor', max_digits=4, decimal_places=2 )
+
+    

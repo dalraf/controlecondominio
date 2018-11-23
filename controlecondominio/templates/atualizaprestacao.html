@@ -22,4 +22,35 @@
         </div>
     </div>
 </form>
+<div class="row">
+        <div class="col-md-12">
+                <hr/>
+        </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+        <table class="table table-bordered table-striped table-condensed table-responsive">
+            <thead>
+                <tr>
+                    <th style="text-align:center">Descrição</th>
+                    <th style="text-align:center">Valor</th>
+                    <th style="text-align:center"></th>
+                    <th style="text-align:center"><a href="{% url 'crialancamento' prestacao  %}"><span class="glyphicon glyphicon-plus"></span></a></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for lancamento in lancamentos %}
+                <tr>
+                    <td style="text-align:center">{{ lancamento.descricao }}</td>
+                    <td style="text-align:center">{{ lancamento.valormoeda }}</td>
+                    <td style="text-align:center"><a href=""><span class="glyphicon glyphicon-pencil"></span></a></td>
+                    <td style="text-align:center"><a href=""><span class="glyphicon glyphicon-trash"></span></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock content %}

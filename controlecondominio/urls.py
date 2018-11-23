@@ -10,4 +10,5 @@ urlpatterns = [
     path('prestacao/add/', criaprestacao.as_view(template_name='criaprestacao.html'), name='criaprestacao'),
     path('prestacao/edit/<int:pk>/', atualizaprestacao.as_view(template_name='atualizaprestacao.html'), name='atualizaprestacao'),
     path('prestacao/delete/<int:pk>/', deleteprestacao.as_view(template_name='deletaprestacao.html'), name='deletaprestacao'),
+    path('lancamento/add/<int:prestacao>', crialancamento.as_view(template_name='crialancamento.html'), name='crialancamento'),
 ]
