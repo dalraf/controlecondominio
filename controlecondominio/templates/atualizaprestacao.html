@@ -28,6 +28,13 @@
         </div>
 </div>
 <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8">
+                <h3>Lançamentos:</h3>
+        </div>
+</div>
+<div class="row">
     <div class="col-md-2">
     </div>
     <div class="col-md-8">
@@ -44,7 +51,7 @@
                 {% for lancamento in lancamentos %}
                 <tr>
                     <td style="text-align:center">{{ lancamento.descricao }}</td>
-                    <td style="text-align:center">{{ lancamento.valormoeda }}</td>
+                    <td style="text-align:center">R$ {{ lancamento.valormoeda }}</td>
                     <td style="text-align:center"><a href="{% url 'atualizalancamento' prestacao lancamento.pk  %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
                     <td style="text-align:center"><a href="{% url 'deletalancamento' prestacao lancamento.pk  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
                 </tr>

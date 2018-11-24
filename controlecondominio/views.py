@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from django.urls import reverse_lazy
 from controlecondominio.models import *
+from django.utils.decorators import method_decorator
 
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
@@ -16,17 +17,17 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     return render(request, 'index.html',)
 
-
+@method_decorator(login_required, name='dispatch')
 class listaprestacao(ListView):
     model = prestacao
 
-
+@method_decorator(login_required, name='dispatch')
 class criaprestacao(CreateView):
     model = prestacao
     fields = ['mes', 'ano']
     success_url = reverse_lazy('listaprestacao')
 
-
+@method_decorator(login_required, name='dispatch')
 class atualizaprestacao(UpdateView):
     model = prestacao
     fields = ['mes', 'ano']
@@ -38,12 +39,12 @@ class atualizaprestacao(UpdateView):
         context['prestacao'] = self.kwargs['pk']
         return context
 
-
+@method_decorator(login_required, name='dispatch')
 class deleteprestacao(DeleteView):
     model = prestacao
     success_url = reverse_lazy('listaprestacao')
 
-
+@method_decorator(login_required, name='dispatch')
 class crialancamento(CreateView):
     model = lancamentos
     fields = [ 'descricao', 'valormoeda']
@@ -60,7 +61,7 @@ class crialancamento(CreateView):
         form.instance.prestacao = prestacao.objects.get(pk=self.kwargs.get('prestacao', None))
         return super(crialancamento, self).form_valid(form)
 
-
+@method_decorator(login_required, name='dispatch')
 class atualizalancamento(UpdateView):
     model = lancamentos
     fields = ['descricao', 'valormoeda']
@@ -73,6 +74,7 @@ class atualizalancamento(UpdateView):
     def get_success_url(self):
         return reverse('atualizaprestacao', kwargs={'pk': self.kwargs['prestacao']})
 
+@method_decorator(login_required, name='dispatch')
 class deletelancamento(DeleteView):
     model = lancamentos
     success_url = reverse_lazy('listaprestacao')
