@@ -30,7 +30,7 @@ class prestacao(models.Model):
     mes = models.IntegerField('Mês', choices=MESES, default=18)
 
     def get_absolute_url(self):
-        return reverse('prestacao', kwargs={'id': self.id})
+        return reverse('prestacao', kwargs={'id': self.pk})
 
     def __str__(self):
         return str(self.get_ano_display()) + " de " + str(self.get_mes_display())
@@ -42,6 +42,15 @@ class prestacao(models.Model):
 class lancamentos(models.Model):
     prestacao = models.ForeignKey('prestacao', verbose_name='prestacao', on_delete=models.CASCADE)
     descricao = models.CharField('Descrição', max_length=50,)
-    valormoeda = models.DecimalField('Valor', max_digits=4, decimal_places=2 )
+    valormoeda = models.DecimalField('Valor', decimal_places=2 )
+
+    def get_absolute_url(self):
+        return reverse('prestacao', kwargs={'id': self.pk})
+
+    def __str__(self):
+        return str(self.descricao + " de " + str(self.valormoeda)) + " Reais"
+    
+    def __unicode__(self):
+        return str(self.descricao + " de " + str(self.valormoeda)) + " Reais"
 
     

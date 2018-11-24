@@ -45,8 +45,8 @@
                 <tr>
                     <td style="text-align:center">{{ lancamento.descricao }}</td>
                     <td style="text-align:center">{{ lancamento.valormoeda }}</td>
-                    <td style="text-align:center"><a href=""><span class="glyphicon glyphicon-pencil"></span></a></td>
-                    <td style="text-align:center"><a href=""><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <td style="text-align:center"><a href="{% url 'atualizalancamento' prestacao lancamento.pk  %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                    <td style="text-align:center"><a href="{% url 'deletalancamento' prestacao lancamento.pk  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
                 </tr>
                 {% endfor %}
             </tbody>

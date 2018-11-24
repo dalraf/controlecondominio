@@ -47,7 +47,11 @@ class deleteprestacao(DeleteView):
 class crialancamento(CreateView):
     model = lancamentos
     fields = ['prestacao','descricao', 'valormoeda']
-    #success_url = reverse_lazy('atualizaprestacao')
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(crialancamento, self).get_context_data(*args, **kwargs)
+        context['prestacao'] = self.kwargs['prestacao']
+        return context
 
     def get_success_url(self):
         return reverse('atualizaprestacao', kwargs={'pk': self.kwargs['prestacao']})
@@ -57,3 +61,28 @@ class crialancamento(CreateView):
         initial = initial.copy()
         initial['prestacao'] = prestacao.objects.get(pk=self.kwargs.get('prestacao', None))
         return initial
+
+
+class atualizalancamento(UpdateView):
+    model = lancamentos
+    fields = ['prestacao','descricao', 'valormoeda']
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(atualizalancamento, self).get_context_data(*args, **kwargs)
+        context['prestacao'] = self.kwargs['prestacao']
+        return context
+
+    def get_success_url(self):
+        return reverse('atualizaprestacao', kwargs={'pk': self.kwargs['prestacao']})
+
+class deletelancamento(DeleteView):
+    model = lancamentos
+    success_url = reverse_lazy('listaprestacao')
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(deletelancamento, self).get_context_data(*args, **kwargs)
+        context['prestacao'] = self.kwargs['prestacao']
+        return context
+
+    def get_success_url(self):
+        return reverse('atualizaprestacao', kwargs={'pk': self.kwargs['prestacao']})
