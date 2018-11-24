@@ -46,7 +46,7 @@ class deleteprestacao(DeleteView):
 
 class crialancamento(CreateView):
     model = lancamentos
-    fields = ['prestacao','descricao', 'valormoeda']
+    fields = [ 'descricao', 'valormoeda']
 
     def get_context_data(self, *args, **kwargs):
         context = super(crialancamento, self).get_context_data(*args, **kwargs)
@@ -55,17 +55,15 @@ class crialancamento(CreateView):
 
     def get_success_url(self):
         return reverse('atualizaprestacao', kwargs={'pk': self.kwargs['prestacao']})
-    
-    def get_initial(self):
-        initial = super(crialancamento, self).get_initial()
-        initial = initial.copy()
-        initial['prestacao'] = prestacao.objects.get(pk=self.kwargs.get('prestacao', None))
-        return initial
+
+    def form_valid(self, form):
+        form.instance.prestacao = prestacao.objects.get(pk=self.kwargs.get('prestacao', None))
+        return super(crialancamento, self).form_valid(form)
 
 
 class atualizalancamento(UpdateView):
     model = lancamentos
-    fields = ['prestacao','descricao', 'valormoeda']
+    fields = ['descricao', 'valormoeda']
 
     def get_context_data(self, *args, **kwargs):
         context = super(atualizalancamento, self).get_context_data(*args, **kwargs)
