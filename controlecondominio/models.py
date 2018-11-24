@@ -42,7 +42,7 @@ class prestacao(models.Model):
 class lancamentos(models.Model):
     prestacao = models.ForeignKey('prestacao', verbose_name='prestacao', on_delete=models.CASCADE)
     descricao = models.CharField('Descrição', max_length=50,)
-    valormoeda = models.DecimalField('Valor', decimal_places=2 )
+    valormoeda = models.DecimalField('Valor', max_digits=20, decimal_places=2 )
 
     def get_absolute_url(self):
         return reverse('prestacao', kwargs={'id': self.pk})
