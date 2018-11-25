@@ -26,8 +26,8 @@ MESES = [
 
 
 class prestacao(models.Model):
-    ano = models.IntegerField('Ano', choices=ANOS, default=1)
-    mes = models.IntegerField('Mês', choices=MESES, default=18)
+    ano = models.IntegerField('Ano', choices=ANOS, help_text="Ano ref.", default=1)
+    mes = models.IntegerField('Mês', choices=MESES, help_text="Mês ref.", default=18)
 
     def get_absolute_url(self):
         return reverse('prestacao', kwargs={'id': self.pk})
@@ -40,9 +40,9 @@ class prestacao(models.Model):
 
 
 class lancamentos(models.Model):
-    prestacao = models.ForeignKey('prestacao', verbose_name='prestacao', on_delete=models.CASCADE)
-    descricao = models.CharField('Descrição', max_length=50,)
-    valormoeda = models.DecimalField('Valor', max_digits=20, decimal_places=2 )
+    prestacao = models.ForeignKey('prestacao', verbose_name='prestacao', help_text="Prestação Ref.", on_delete=models.CASCADE)
+    descricao = models.CharField('Descrição', help_text="Descrição do Lançamento", max_length=50,)
+    valormoeda = models.DecimalField('Valor', help_text="Valor do lançamento (R$)", max_digits=20, decimal_places=2 )
 
     def get_absolute_url(self):
         return reverse('prestacao', kwargs={'id': self.pk})
