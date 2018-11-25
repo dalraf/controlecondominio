@@ -50,7 +50,7 @@
     body::after {
     content: '';
     display: block;
-    height: 50px;
+    height: 30px;
     }
 
     footer p {color: white;}
@@ -60,7 +60,7 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 50px;
+    height: 30px;
     background-color: black;
     text-align: center
     }
@@ -81,7 +81,6 @@
             </div>
             <div class="collapse navbar-collapse" id="navbargiap">
                 <ul class="nav navbar-nav">
-                    <li><a href="{% url 'index' %}">Home</a></li>
                     {% if user.is_authenticated %}
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Financeiro<span
                                 class="caret"></span></a>
@@ -103,7 +102,7 @@
     <footer class="footer">
         <div class="container">
             <p>
-                Sistem de controle de condomínio, v1 , 2018
+                Sistema de controle de condomínio, v1 , 2018
             </p>
         </div>
     </footer>
