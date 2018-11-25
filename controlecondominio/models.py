@@ -48,7 +48,7 @@ class lancamentos(models.Model):
         return reverse('prestacao', kwargs={'id': self.pk})
 
     def __str__(self):
-        return str(self.descricao + " de " + str(self.valormoeda)) + " Reais"
+        return "Descrição: '" + str(self.descricao + "', valor: R$ " + str(self.valormoeda))
     
     def __unicode__(self):
         return str(self.descricao + " de " + str(self.valormoeda)) + " Reais"

@@ -3,6 +3,7 @@ from django.views.generic import ListView
 from django.urls import reverse_lazy
 from controlecondominio.models import *
 from django.utils.decorators import method_decorator
+from django.db.models import Sum
 
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
@@ -36,6 +37,7 @@ class atualizaprestacao(UpdateView):
     def get_context_data(self, *args, **kwargs):
         context = super(atualizaprestacao, self).get_context_data(*args, **kwargs)
         context['lancamentos'] = lancamentos.objects.filter(prestacao=self.object)
+        context['somalancamentos'] = lancamentos.objects.filter(prestacao=self.object).aggregate(Sum('valormoeda'))['valormoeda__sum']
         context['prestacao'] = self.kwargs['pk']
         return context
 
