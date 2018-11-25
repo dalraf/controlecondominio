@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Controle de condomínio</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/sandstone/bootstrap.min.css" rel="stylesheet" integrity="sha384-G3G7OsJCbOk1USkOY4RfeX1z27YaWrZ1YuaQ5tbuawed9IoreRDpWpTkZLXQfPm3"
-        crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/sandstone/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-G3G7OsJCbOk1USkOY4RfeX1z27YaWrZ1YuaQ5tbuawed9IoreRDpWpTkZLXQfPm3" crossorigin="anonymous">
     <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
 
 </head>
@@ -38,24 +38,53 @@
     #id_datareferencia {
         width: 100px;
     }
+    html{ height:100%; }
+    body{ min-height:100%; padding:0; margin:0; position:relative; }
+    header{ height:50px; background:lightcyan; }
+    footer{ background:PapayaWhip; }
+
+    body {
+    position: relative; 
+    }
+
+    body::after {
+    content: '';
+    display: block;
+    height: 50px;
+    }
+
+    footer p {color: white;}
+
+    footer {
+    color=: "white";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    text-align: center
+    }
+}
+}
 </style>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-static">
         <nav class="navbar navbar-default">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbargiap">
-                              <span class="icon-bar"></span>
-                              <span class="icon-bar"></span>
-                              <span class="icon-bar"></span> 
-                            </button>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
                 <a class="navbar-brand" href="{% url 'index' %}">Controle</a>
             </div>
             <div class="collapse navbar-collapse" id="navbargiap">
                 <ul class="nav navbar-nav">
                     <li><a href="{% url 'index' %}">Home</a></li>
                     {% if user.is_authenticated %}
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Financeiro<span class="caret"></span></a>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Financeiro<span
+                                class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="{% url 'listaprestacao' %}">Gastos mensais</a></li>
                         </ul>
@@ -68,17 +97,25 @@
                 {% endif %}
             </div>
         </nav>
-        <hr/> {% block content %} {% endblock %}
+        <hr /> {% block content %}
+        {% endblock %}
     </div>
-
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Bootstrap JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
-        crossorigin="anonymous"></script>
+    <footer class="footer">
+        <div class="container">
+            <p>
+                Sistem de controle de condomínio, v1 , 2018
+            </p>
+        </div>
+    </footer>
 </body>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Bootstrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
+        crossorigin="anonymous"></script>
 <script>
     $(document).ready(function () {
         $.datepicker.setDefaults({
