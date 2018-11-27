@@ -124,8 +124,7 @@
             dayNamesMin: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
             monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
         })
-        $('#id_vencimento').datepicker();
-        $('#id_datareferencia').datepicker();
+        $(".datepicker" ).datepicker();
         if ($('#id_tipodepessoa').val() == '0') {
             $("#id_numcpfcnpj").mask('000.000.000-00', { reverse: true });
         }

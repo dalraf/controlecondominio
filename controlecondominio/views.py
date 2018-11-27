@@ -51,7 +51,7 @@ class deleteprestacao(DeleteView):
 @method_decorator(login_required, name='dispatch')
 class crialancamento(CreateView):
     model = lancamentos
-    form_class = lancamentos
+    form_class = lancamentosforms
     #fields = ['data', 'descricao', 'valormoeda']
 
     def get_context_data(self, *args, **kwargs):
@@ -69,7 +69,8 @@ class crialancamento(CreateView):
 @method_decorator(login_required, name='dispatch')
 class atualizalancamento(UpdateView):
     model = lancamentos
-    fields = ['data', 'descricao', 'valormoeda']
+    form_class = lancamentosforms
+    #fields = ['data', 'descricao', 'valormoeda']
 
     def get_context_data(self, *args, **kwargs):
         context = super(atualizalancamento, self).get_context_data(*args, **kwargs)
