@@ -6,4 +6,4 @@ class lancamentosforms(forms.ModelForm):
     class Meta:
         model = lancamentos
         fields = ['tipolancamento', 'data', 'descricao', 'valormoeda']
-    data = forms.DateField(widget = forms.DateInput(attrs={'class':'datepicker'}), help_text="Data do Pagamento", initial=timezone.now)
+    data = forms.DateField(widget = forms.DateInput(attrs={'class':'datepicker','style': 'width:100px'}), help_text="Data do Pagamento", initial=timezone.now)
