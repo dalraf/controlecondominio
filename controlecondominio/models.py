@@ -2,8 +2,6 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 
-# Create your models here.
-
 ANOS = [
     (18, '2018'),
     (19, '2019'),
