@@ -38,8 +38,11 @@ class atualizaprestacao(UpdateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(atualizaprestacao, self).get_context_data(*args, **kwargs)
-        context['lancamentos'] = lancamentos.objects.filter(prestacao=self.object)
-        context['somalancamentos'] = lancamentos.objects.filter(prestacao=self.object).aggregate(Sum('valormoeda'))['valormoeda__sum']
+        context['lancamentosrecebimentos'] = lancamentos.objects.filter(prestacao=self.object,tipolancamento=1)
+        context['lancamentospagamentos'] = lancamentos.objects.filter(prestacao=self.object,tipolancamento=0)
+        context['somarecebimentos'] = lancamentos.objects.filter(prestacao=self.object,tipolancamento=1).aggregate(Sum('valormoeda'))['valormoeda__sum']
+        context['somapagamentos'] = lancamentos.objects.filter(prestacao=self.object,tipolancamento=0).aggregate(Sum('valormoeda'))['valormoeda__sum']
+        context['saldo'] = context['somarecebimentos'] - context['somapagamentos']
         context['prestacao'] = self.kwargs['pk']
         return context
 
