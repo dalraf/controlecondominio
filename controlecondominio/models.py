@@ -11,8 +11,8 @@ ANOS = [
 ]
 
 TIPOLANCAMENTO = [
-    (0, 'Recebimento'),
-    (1, 'Pagamento'),
+    (0, 'Pagamento'),
+    (1, 'Recebimento'),
 ]
 
 MESES = [
