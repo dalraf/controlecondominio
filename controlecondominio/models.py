@@ -11,8 +11,8 @@ ANOS = [
 ]
 
 TIPOLANCAMENTO = [
-    (0, 'Pagamento'),
     (1, 'Recebimento'),
+    (0, 'Pagamento'),
 ]
 
 MESES = [
@@ -46,7 +46,7 @@ class prestacao(models.Model):
 
 
 class lancamentos(models.Model):
-    tipolancamento = models.IntegerField('Tipo Lançamento', choices=TIPOLANCAMENTO, help_text="Tipo de lançamento", default=0)
+    tipolancamento = models.IntegerField('Tipo Lançamento', choices=TIPOLANCAMENTO, help_text="Tipo de lançamento", default=1)
     data = models.DateField('Data', help_text="Data do Pagamento", default=timezone.now)
     prestacao = models.ForeignKey('prestacao', verbose_name='prestacao', help_text="Prestação Ref.", on_delete=models.CASCADE)
     descricao = models.CharField('Descrição', help_text="Descrição do Lançamento", max_length=50,)
