@@ -10,6 +10,11 @@ ANOS = [
     (20, '2020'),
 ]
 
+TIPOLANCAMENTO = [
+    (0, 'Recebimento'),
+    (1, 'Pagamento'),
+]
+
 MESES = [
     (1, 'Janeiro'),
     (2, 'Fevereiro'),
@@ -41,6 +46,7 @@ class prestacao(models.Model):
 
 
 class lancamentos(models.Model):
+    tipolancamento = models.IntegerField('Tipo Lançamento', choices=TIPOLANCAMENTO, help_text="Tipo de lançamento", default=0)
     data = models.DateField('Data', help_text="Data do Pagamento", default=timezone.now)
     prestacao = models.ForeignKey('prestacao', verbose_name='prestacao', help_text="Prestação Ref.", on_delete=models.CASCADE)
     descricao = models.CharField('Descrição', help_text="Descrição do Lançamento", max_length=50,)
