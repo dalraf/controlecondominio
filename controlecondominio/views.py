@@ -2,8 +2,10 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from django.urls import reverse_lazy
 from controlecondominio.models import *
+from controlecondominio.forms import *
 from django.utils.decorators import method_decorator
 from django.db.models import Sum
+from django import forms
 
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
@@ -49,7 +51,8 @@ class deleteprestacao(DeleteView):
 @method_decorator(login_required, name='dispatch')
 class crialancamento(CreateView):
     model = lancamentos
-    fields = [ 'descricao', 'valormoeda']
+    form_class = lancamentos
+    #fields = ['data', 'descricao', 'valormoeda']
 
     def get_context_data(self, *args, **kwargs):
         context = super(crialancamento, self).get_context_data(*args, **kwargs)
@@ -66,7 +69,7 @@ class crialancamento(CreateView):
 @method_decorator(login_required, name='dispatch')
 class atualizalancamento(UpdateView):
     model = lancamentos
-    fields = ['descricao', 'valormoeda']
+    fields = ['data', 'descricao', 'valormoeda']
 
     def get_context_data(self, *args, **kwargs):
         context = super(atualizalancamento, self).get_context_data(*args, **kwargs)

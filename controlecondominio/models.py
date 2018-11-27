@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 
 # Create your models here.
 
@@ -40,6 +41,7 @@ class prestacao(models.Model):
 
 
 class lancamentos(models.Model):
+    data = models.DateField('Data', help_text="Data do Pagamento", default=timezone.now)
     prestacao = models.ForeignKey('prestacao', verbose_name='prestacao', help_text="Prestação Ref.", on_delete=models.CASCADE)
     descricao = models.CharField('Descrição', help_text="Descrição do Lançamento", max_length=50,)
     valormoeda = models.DecimalField('Valor', help_text="Valor do lançamento (R$)", max_digits=20, decimal_places=2 )
