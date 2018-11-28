@@ -49,6 +49,7 @@
                     </tr>
                     </thead>
                     <tbody>
+                        {% if lancamentosrecebimentos %}
                         {% for lancamento in lancamentosrecebimentos %}
                         <tr>
                             <td style="text-align:center">{{ lancamento.get_tipolancamento_display }}</td>
@@ -69,6 +70,8 @@
                             <td style="text-align:center"></td>
                             <td style="text-align:center"></td>
                         </tr>
+                        {% endif %}
+                        {% if lancamentospagamentos %}
                         {% for lancamento in lancamentospagamentos %}
                         <tr>
                             <td style="text-align:center">{{ lancamento.get_tipolancamento_display }}</td>
@@ -89,6 +92,8 @@
                             <td style="text-align:center"></td>
                             <td style="text-align:center"></td>
                         </tr>
+                        {% endif %}
+                        {% if lancamentosrecebimentos or lancamentospagamentos %}
                         <tr>
                             <td style="text-align:center"></td>
                             <td style="text-align:center"></td>
@@ -105,6 +110,7 @@
                             <td style="text-align:center"></td>
                             <td style="text-align:center"></td>
                         </tr>
+                        {% endif %}
                     </tbody>
                 </table>
             </div>
