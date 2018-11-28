@@ -34,7 +34,11 @@ class criaprestacao(CreateView):
 class atualizaprestacao(UpdateView):
     model = prestacao
     fields = ['mes', 'ano', 'saldoanterior']
-    success_url = reverse_lazy('listaprestacao')
+
+    #success_url = reverse_lazy('listaprestacao')
+    def get_success_url(self):
+        return reverse('atualizaprestacao', kwargs={'pk': self.kwargs['pk']})
+
 
     def get_context_data(self, *args, **kwargs):
         context = super(atualizaprestacao, self).get_context_data(*args, **kwargs)
