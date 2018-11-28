@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'controlecondominio',
-    'bootstrap3'
+    'bootstrap3',
+    'reset_migrations'
 ]
 
 MIDDLEWARE = [
