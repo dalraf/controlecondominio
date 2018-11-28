@@ -1,1 +1,1 @@
-./manage.py reset_migration controledecondominio
+python manage.py reset_migration controlecondominio
