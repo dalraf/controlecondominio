@@ -44,8 +44,12 @@ class atualizaprestacao(UpdateView):
         context['somapagamentos'] = lancamentos.objects.filter(prestacao=self.object,tipolancamento=0).aggregate(Sum('valormoeda'))['valormoeda__sum']
         if context['somarecebimentos'] != None and context['somapagamentos'] != None:
             context['saldo'] = context['somarecebimentos'] - context['somapagamentos']
-        else:
-            context['saldo'] = ""
+        elif context['somarecebimentos'] != None:
+            context['saldo'] = context['somarecebimentos']
+        elif context['somapagamentos'] != None:
+            context['saldo'] = 0 - context['somapagamentos']
+        else:    
+            context['saldo'] = 0
         context['prestacao'] = self.kwargs['pk']
         return context
 
