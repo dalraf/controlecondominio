@@ -27,29 +27,30 @@ class listaprestacao(ListView):
 @method_decorator(login_required, name='dispatch')
 class criaprestacao(CreateView):
     model = prestacao
-    fields = ['mes', 'ano']
+    fields = ['mes', 'ano' , 'saldoanterior']
     success_url = reverse_lazy('listaprestacao')
 
 @method_decorator(login_required, name='dispatch')
 class atualizaprestacao(UpdateView):
     model = prestacao
-    fields = ['mes', 'ano']
+    fields = ['mes', 'ano', 'saldoanterior']
     success_url = reverse_lazy('listaprestacao')
 
     def get_context_data(self, *args, **kwargs):
         context = super(atualizaprestacao, self).get_context_data(*args, **kwargs)
         context['lancamentosrecebimentos'] = lancamentos.objects.filter(prestacao=self.object,tipolancamento=1)
         context['lancamentospagamentos'] = lancamentos.objects.filter(prestacao=self.object,tipolancamento=0)
+        context['saldoanterior'] = prestacao.objects.filter(pk=self.kwargs['pk']).values_list('saldoanterior', flat=True)[0]
         context['somarecebimentos'] = lancamentos.objects.filter(prestacao=self.object,tipolancamento=1).aggregate(Sum('valormoeda'))['valormoeda__sum']
         context['somapagamentos'] = lancamentos.objects.filter(prestacao=self.object,tipolancamento=0).aggregate(Sum('valormoeda'))['valormoeda__sum']
         if context['somarecebimentos'] != None and context['somapagamentos'] != None:
-            context['saldo'] = context['somarecebimentos'] - context['somapagamentos']
+            context['saldo'] = context['saldoanterior'] + context['somarecebimentos'] - context['somapagamentos']
         elif context['somarecebimentos'] != None:
-            context['saldo'] = context['somarecebimentos']
+            context['saldo'] = context['saldoanterior'] + context['somarecebimentos']
         elif context['somapagamentos'] != None:
-            context['saldo'] = 0 - context['somapagamentos']
+            context['saldo'] = context['saldoanterior'] - context['somapagamentos']
         else:    
-            context['saldo'] = 0
+            context['saldo'] = context['saldoanterior']
         context['prestacao'] = self.kwargs['pk']
         return context
 

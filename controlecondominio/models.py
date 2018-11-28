@@ -32,6 +32,8 @@ MESES = [
 class prestacao(models.Model):
     ano = models.IntegerField('Ano', choices=ANOS, help_text="Ano ref.", default=1)
     mes = models.IntegerField('Mês', choices=MESES, help_text="Mês ref.", default=18)
+    saldoanterior = models.DecimalField('Saldo Anterior', help_text="Saldo da prestacão anterior (R$)", default = 0 , max_digits=20, decimal_places=2 )
+
 
     def get_absolute_url(self):
         return reverse('prestacao', kwargs={'id': self.pk})
