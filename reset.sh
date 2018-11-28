@@ -1,0 +1,1 @@
+./manage.py reset_migration controledecondominio
