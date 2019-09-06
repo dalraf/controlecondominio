@@ -34,6 +34,9 @@ class prestacao(models.Model):
     mes = models.IntegerField('Mês', choices=MESES, help_text="Mês ref.", default=18)
     saldoanterior = models.DecimalField('Saldo Anterior', help_text="Saldo da prestacão anterior (R$)", default = 0 , max_digits=20, decimal_places=2 )
 
+    class Meta:
+        unique_together = ('ano', 'mes',)
+
 
     def get_absolute_url(self):
         return reverse('prestacao', kwargs={'id': self.pk})
