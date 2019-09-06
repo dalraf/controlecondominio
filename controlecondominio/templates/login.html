@@ -2,31 +2,19 @@
 <form method="post" class="form">
   {% csrf_token %}
   <div class="row">
-    <div class='col-4'>
-    </div>
-    <div class='col-4'>
+    <div class='col-12' align="center">
       {% bootstrap_form form layout="horizontal" size="small"%}
     </div>
-    <div lass='col-4'>
-    </div>
   </div>
   </div>
   <div class="row">
-    <div class="col-4">
-    </div>
-    <div class="col-4">
+    <div class="col-12" align="center">
       <p class="{{ textoformato }}"><i>{{ mensagem }}</i></p>
     </div>
-    <div class='col-4'>
-    </div>
   </div>
   <div class="row">
-    <div class="col-4">
-    </div>
-    <div class="col-4">
-        <input type="submit" name="Salvar" value="Login" class="btn btn-primary">
-    </div>
-    <div class='col-4'>
+    <div class="col-12"align="center" >
+      <input type="submit" name="Salvar" value="Login" class="btn btn-primary">
     </div>
   </div>
 </form>
