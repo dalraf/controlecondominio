@@ -39,13 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'controlecondominio',
-    'bootstrap3',
+    'bootstrap4',
     'reset_migrations'
 ]
 
 
-BOOTSTRAP3 = {
-    "theme_url": "https://bootswatch.com/3/sandstone/bootstrap.min.css",
+BOOTSTRAP4 = {
+    "theme_url": "https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sandstone/bootstrap.min.css"
 }
 
 MIDDLEWARE = [

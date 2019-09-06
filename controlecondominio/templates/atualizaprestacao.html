@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content %}{% load bootstrap3 %}{% bootstrap_messages %} {{ form.media }}
+{% extends 'base.html' %} {% block content %}{% load bootstrap4 %}{% bootstrap_messages %} {{ form.media }}
 <form method="post" class="form" enctype="multipart/form-data">
     <div class="row">
         {% csrf_token %}
@@ -56,10 +56,8 @@
                             <td style="text-align:center">{{ lancamento.data }}</td>
                             <td style="text-align:center">{{ lancamento.descricao }}</td>
                             <td style="text-align:center">R$ {{ lancamento.valormoeda }}</td>
-                            <td style="text-align:center"><a href="{% url 'atualizalancamento' prestacao lancamento.pk  %}"><span
-                                        class="glyphicon glyphicon-pencil"></span></a></td>
-                            <td style="text-align:center"><a href="{% url 'deletalancamento' prestacao lancamento.pk  %}"><span
-                                        class="glyphicon glyphicon-trash"></span></a></td>
+                            <td style="text-align:center"><a href="{% url 'atualizalancamento' prestacao lancamento.pk  %}"><i class="fas fa-pencil-alt"></i></span></a></td>
+                            <td style="text-align:center"><a href="{% url 'deletalancamento' prestacao lancamento.pk  %}"><i class="fas fa-trash"></i></a></td>
                         </tr>
                         {% endfor %}
                         <tr>
@@ -78,10 +76,8 @@
                             <td style="text-align:center">{{ lancamento.data }}</td>
                             <td style="text-align:center">{{ lancamento.descricao }}</td>
                             <td style="text-align:center">R$ {{ lancamento.valormoeda }}</td>
-                            <td style="text-align:center"><a href="{% url 'atualizalancamento' prestacao lancamento.pk  %}"><span
-                                        class="glyphicon glyphicon-pencil"></span></a></td>
-                            <td style="text-align:center"><a href="{% url 'deletalancamento' prestacao lancamento.pk  %}"><span
-                                        class="glyphicon glyphicon-trash"></span></a></td>
+                            <td style="text-align:center"><a href="{% url 'atualizalancamento' prestacao lancamento.pk  %}"><i class="fas fa-pencil-alt"></span></a></td>
+                            <td style="text-align:center"><a href="{% url 'deletalancamento' prestacao lancamento.pk  %}"><i class="fas fa-trash"></a></td>
                         </tr>
                         {% endfor %}
                         <tr>

@@ -23,10 +23,8 @@
                         <tr>
                             <td style="text-align:center">{{ prestacao.get_ano_display }}</td>
                             <td style="text-align:center">{{ prestacao.get_mes_display }}</td>
-                            <td style="text-align:center"><a href="{% url 'atualizaprestacao' prestacao.pk %}"><span
-                                        class="glyphicon glyphicon-pencil"></span></a></td>
-                            <td style="text-align:center"><a href="{% url 'deletaprestacao' prestacao.pk %}"><span
-                                        class="glyphicon glyphicon-trash"></span></a></td>
+                            <td style="text-align:center"><a href="{% url 'atualizaprestacao' prestacao.pk %}"><i class="fas fa-pencil-alt"></i></a></td>
+                            <td style="text-align:center"><a href="{% url 'deletaprestacao' prestacao.pk %}"><i class="fas fa-trash"></i></a></td>
                         </tr>
                         {% endfor %}
                     </tbody>
