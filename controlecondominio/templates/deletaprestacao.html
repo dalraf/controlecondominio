@@ -3,9 +3,9 @@
     <div class="row">
         {% csrf_token %}
         <div class="row">
-            <div class='col-md-3'>
+            <div class='col-2'>
             </div>
-            <div class='col-md-6'>
+            <div class='col-8'>
                 <div class="alert alert-danger" role="alert">Você quer apagar prestação de {{ object }} ?</div>
             </div>
         </div>
@@ -16,12 +16,12 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-4">
         </div>
-        <div class="col-md-3">
+        <div class="col-4">
             <p class="{{ textoformato }}"><i>{{ mensagem }}</i></p>
         </div>
-        <div class='col-md-4'>
+        <div class='col-4'>
             <a class="btn btn-default" role="button" href="{% url 'listaprestacao' %}">Voltar</a>
             <input type="submit" name="Confirmar" value="Confirmar" class="btn btn-default">
         </div>
