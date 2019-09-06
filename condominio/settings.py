@@ -43,6 +43,11 @@ INSTALLED_APPS = [
     'reset_migrations'
 ]
 
+
+BOOTSTRAP3 = {
+    "theme_url": "https://bootswatch.com/3/sandstone/bootstrap.min.css",
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
