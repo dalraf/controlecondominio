@@ -2,9 +2,7 @@
 <form method="post" class="form" enctype="multipart/form-data">
     <div class="row">
         {% csrf_token %}
-            <div class='col-2'>
-            </div>
-            <div class='col-10'>
+            <div class='col-10' align="center">
                 {% bootstrap_form form layout="horizontal" size="small"%}
             </div>
     </div>
