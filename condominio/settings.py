@@ -40,8 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'controlecondominio',
     'bootstrap4',
-    'reset_migrations',
-    'pwa'
 ]
 
 PWA_APP_NAME = 'Controle de condomínio'
