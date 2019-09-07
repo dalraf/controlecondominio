@@ -13,8 +13,9 @@
             <p class="{{ textoformato }}"><i>{{ mensagem }}</i></p>
         </div>
         <div class='col-4'>
-            <a class="btn btn-primary" role="button" href="{% url 'listaprestacao' %}">Voltar</a>
             <input type="submit" name="Salvar" value="Salvar" class="btn btn-primary">
+            <a class="btn btn-primary" role="button" href="{% url 'crialancamento' prestacao  %}">Adicionar</a>
+            <a class="btn btn-primary" role="button" href="{% url 'listaprestacao' %}">Voltar</a>
         </div>
     </div>
 </form>
@@ -38,7 +39,7 @@
                     <th style="text-align:center">Data</th>
                     <th style="text-align:center">Descrição</th>
                     <th style="text-align:center">Valor</th>
-                    <th style="text-align:center"><a href="{% url 'crialancamento' prestacao  %}"><i class="fas fa-plus"></i></a></th>
+                    <th style="text-align:center"></th>
                     </tr>
                     </thead>
                     <tbody>
