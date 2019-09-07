@@ -18,10 +18,10 @@
             </thead>
                     <tbody>
                         {% for prestacao in object_list %}
-                        <tr>
+                        <tr class='clickable-row' data-href='{% url 'atualizaprestacao' prestacao.pk %}'>
                             <td style="text-align:center">{{ prestacao.get_ano_display }}</td>
                             <td style="text-align:center">{{ prestacao.get_mes_display }}</td>
-                            <td style="text-align:center"><a href="{% url 'atualizaprestacao' prestacao.pk %}"><i class="fas fa-pencil-alt"></i></a></td>
+                            <td style="text-align:center"></td>
                             <td style="text-align:center"><a href="{% url 'deletaprestacao' prestacao.pk %}"><i class="fas fa-trash"></i></a></td>
                         </tr>
                         {% endfor %}

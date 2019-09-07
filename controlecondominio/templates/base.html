@@ -104,6 +104,11 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
     $(document).ready(function () {
+
+        $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+        });
+
         $.datepicker.setDefaults({
             showOn: "focus",
             dateFormat: "dd/mm/yy",
@@ -112,9 +117,11 @@
             monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
         })
         $("#id_data").datepicker();
+
         if ($('#id_tipodepessoa').val() == '0') {
             $("#id_numcpfcnpj").mask('000.000.000-00', { reverse: true });
         }
+
         if ($('#id_tipodepessoa').val() == '1') {
             $("#id_numcpfcnpj").mask('00.000.000/0000-00', { reverse: true });
         }

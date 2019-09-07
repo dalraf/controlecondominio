@@ -2,9 +2,9 @@
 <form method="post" class="form" enctype="multipart/form-data">
     <div class="row">
         {% csrf_token %}
-            <div class='col-12' align="center">
-                {% bootstrap_form form show_label=False%}
-            </div>
+        <div class='col-12' align="center">
+            {% bootstrap_form form show_label=False%}
+        </div>
     </div>
     <div class="row">
         <div class="col-4">
@@ -30,55 +30,58 @@
                 <h5>Lançamentos</h5>
             </div>
             <div class="card-body table-responsive">
-                <table class="table table-striped table-hover table-condensed"">
+                <table class="table table-striped table-hover table-condensed">
                     <thead>
                         <tr>
-                            <th style="
-                    text-align:center">Tipo</th>
+                    <th style=" text-align:center">Tipo</th>
                     <th style="text-align:center">Data</th>
                     <th style="text-align:center">Descrição</th>
                     <th style="text-align:center">Valor</th>
-                    <th style="text-align:center"></th>
-                    <th style="text-align:center"><a href="{% url 'crialancamento' prestacao  %}"><i class="fas fa-plus"></i></a></th>
+                    <th style="text-align:center"><a href="{% url 'crialancamento' prestacao  %}"><i
+                                class="fas fa-plus"></i></a></th>
                     </tr>
                     </thead>
                     <tbody>
                         {% if lancamentosrecebimentos %}
                         {% for lancamento in lancamentosrecebimentos %}
-                        <tr>
+                        <tr class='clickable-row' data-href='{% url 'atualizalancamento' prestacao lancamento.pk %}'>
                             <td style="text-align:center">{{ lancamento.get_tipolancamento_display }}</td>
                             <td style="text-align:center">{{ lancamento.data }}</td>
                             <td style="text-align:center">{{ lancamento.descricao }}</td>
                             <td style="text-align:center">R$ {{ lancamento.valormoeda }}</td>
-                            <td style="text-align:center"><a href="{% url 'atualizalancamento' prestacao lancamento.pk  %}"><i class="fas fa-pencil-alt"></i></span></a></td>
-                            <td style="text-align:center"><a href="{% url 'deletalancamento' prestacao lancamento.pk  %}"><i class="fas fa-trash"></i></a></td>
+                            <td style="text-align:center"><a
+                                    href="{% url 'deletalancamento' prestacao lancamento.pk  %}"><i
+                                        class="fas fa-trash"></i></a></td>
                         </tr>
                         {% endfor %}
                         <tr>
                             <td style="text-align:center"></td>
                             <td style="text-align:center"></td>
                             <td style="text-align:center" bgcolor="#c1c4f4"><b>Soma recebimentos:</b></td>
-                            <td style="text-align:center" bgcolor="#c1c4f4"><b>R$ {{ somarecebimentos|floatformat:2 }}</b></td>
+                            <td style="text-align:center" bgcolor="#c1c4f4"><b>R$
+                                    {{ somarecebimentos|floatformat:2 }}</b></td>
                             <td style="text-align:center"></td>
                             <td style="text-align:center"></td>
                         </tr>
                         {% endif %}
                         {% if lancamentospagamentos %}
                         {% for lancamento in lancamentospagamentos %}
-                        <tr>
+                        <tr class='clickable-row' data-href='{% url 'atualizalancamento' prestacao lancamento.pk %}'>
                             <td style="text-align:center">{{ lancamento.get_tipolancamento_display }}</td>
                             <td style="text-align:center">{{ lancamento.data }}</td>
                             <td style="text-align:center">{{ lancamento.descricao }}</td>
-                            <td style="text-align:center">R$ {{ lancamento.valormoeda }}</td>
-                            <td style="text-align:center"><a href="{% url 'atualizalancamento' prestacao lancamento.pk  %}"><i class="fas fa-pencil-alt"></span></a></td>
-                            <td style="text-align:center"><a href="{% url 'deletalancamento' prestacao lancamento.pk  %}"><i class="fas fa-trash"></a></td>
+                            <td style="text-align:center">R$ {{ lancamento.valormoeda }}</td>s
+                            <td style="text-align:center"><a
+                                    href="{% url 'deletalancamento' prestacao lancamento.pk  %}"><i
+                                        class="fas fa-trash"></a></td>
                         </tr>
                         {% endfor %}
                         <tr>
                             <td style="text-align:center"></td>
                             <td style="text-align:center"></td>
                             <td style="text-align:center" bgcolor="#f9b3b3"><b>Soma pagamentos:</b></td>
-                            <td style="text-align:center" bgcolor="#f9b3b3"<b>R$ {{ somapagamentos|floatformat:2 }}</b></td>
+                            <td style="text-align:center" bgcolor="#f9b3b3" <b>R$ {{ somapagamentos|floatformat:2 }}</b>
+                            </td>
                             <td style="text-align:center"></td>
                             <td style="text-align:center"></td>
                         </tr>
@@ -107,4 +110,4 @@
         </div>
     </div>
 </div>
-    {% endblock content %}
+{% endblock content %}
