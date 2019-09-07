@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
+from django.conf.urls import url
 
 
 urlpatterns = [
     path('', include('controlecondominio.urls')),
     path('admin/', admin.site.urls),
     path('controle/', include('controlecondominio.urls')),
+    url('', include('pwa.urls')),
 ]

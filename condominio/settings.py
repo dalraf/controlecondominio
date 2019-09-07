@@ -40,7 +40,24 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'controlecondominio',
     'bootstrap4',
-    'reset_migrations'
+    'reset_migrations',
+    'pwa'
+]
+
+PWA_APP_NAME = 'Controle de condomínio'
+PWA_APP_DESCRIPTION = "Controle financeiro de condomínio"
+
+PWA_APP_ICONS = [
+{
+'src': '/static/images/controle_icon.png',
+'sizes': '160x160'
+}
+]
+PWA_APP_SPLASH_SCREEN = [
+{
+'src': '/static/images/icons/splash.png',
+'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
+}
 ]
 
 
