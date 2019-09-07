@@ -12,7 +12,6 @@
                     <th style="
                     text-align:center">Ano</th>
                     <th style="text-align:center">Mês</th>
-                    <th style="text-align:center"></th>
                     <th style="text-align:center"><a class="btn btn-primary" role="button" href="{% url 'criaprestacao' %}">Adicionar</a></th>
                 </tr>
             </thead>
@@ -22,7 +21,6 @@
                             <td style="text-align:center">{{ prestacao.get_ano_display }}</td>
                             <td style="text-align:center">{{ prestacao.get_mes_display }}</td>
                             <td style="text-align:center"></td>
-                            <td style="text-align:center"><a href="{% url 'deletaprestacao' prestacao.pk %}"><i class="fas fa-trash"></i></a></td>
                         </tr>
                         {% endfor %}
                     </tbody>
