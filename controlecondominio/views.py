@@ -86,6 +86,7 @@ class atualizalancamento(UpdateView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['prestacao'] = self.kwargs['prestacao']
+        context['lancamento'] = self.kwargs['pk']
         return context
 
     def get_success_url(self):
