@@ -11,6 +11,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import PermissionRequiredMixin
 
 
 @login_required
@@ -22,15 +23,17 @@ class listaprestacao(ListView):
     model = prestacao
 
 @method_decorator(login_required, name='dispatch')
-class criaprestacao(CreateView):
+class criaprestacao(PermissionRequiredMixin,CreateView):
     model = prestacao
     fields = ['mes', 'ano' , 'saldoanterior']
     success_url = reverse_lazy('listaprestacao')
+    permission_required = ('prestacao.can_add' )
 
 @method_decorator(login_required, name='dispatch')
-class atualizaprestacao(UpdateView):
+class atualizaprestacao(PermissionRequiredMixin,UpdateView):
     model = prestacao
     fields = ['mes', 'ano', 'saldoanterior']
+    permission_required = ('prestacao.can_change' )
 
     #success_url = reverse_lazy('listaprestacao')
     def get_success_url(self):
@@ -55,14 +58,16 @@ class atualizaprestacao(UpdateView):
         return context
 
 @method_decorator(login_required, name='dispatch')
-class deleteprestacao(DeleteView):
+class deleteprestacao(PermissionRequiredMixin,DeleteView):
     model = prestacao
     success_url = reverse_lazy('listaprestacao')
+    permission_required = ('prestacao.can_delete' )
 
 @method_decorator(login_required, name='dispatch')
-class crialancamento(CreateView):
+class crialancamento(PermissionRequiredMixin,CreateView):
     model = lancamentos
     form_class = lancamentosforms
+    permission_required = ('lancamentos.can_add' )
     #fields = ['data', 'descricao', 'valormoeda']
 
     def get_context_data(self, *args, **kwargs):
@@ -78,9 +83,10 @@ class crialancamento(CreateView):
         return super().form_valid(form)
 
 @method_decorator(login_required, name='dispatch')
-class atualizalancamento(UpdateView):
+class atualizalancamento(PermissionRequiredMixin,UpdateView):
     model = lancamentos
     form_class = lancamentosforms
+    permission_required = ('lancamentos.can_change' )
     #fields = ['data', 'descricao', 'valormoeda']
 
     def get_context_data(self, *args, **kwargs):
@@ -93,9 +99,10 @@ class atualizalancamento(UpdateView):
         return reverse('atualizaprestacao', kwargs={'pk': self.kwargs['prestacao']})
 
 @method_decorator(login_required, name='dispatch')
-class deletelancamento(DeleteView):
+class deletelancamento(PermissionRequiredMixin,DeleteView):
     model = lancamentos
     success_url = reverse_lazy('listaprestacao')
+    ermission_required = ('lancamentos.can_delete' )
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
