@@ -54,9 +54,10 @@
 <body>
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="/">Menu Inicial</a>
+            <a class="btn btn-primary" role="button"  href="/">Menu Inicial</a>
             {% if user.is_authenticated %}
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
                 <a href="#">Usuário: {{ user.get_username }}</a>
             </div>
             {% endif %}
