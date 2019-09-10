@@ -102,7 +102,7 @@ class atualizalancamento(PermissionRequiredMixin,UpdateView):
 class deletelancamento(PermissionRequiredMixin,DeleteView):
     model = lancamentos
     success_url = reverse_lazy('listaprestacao')
-    ermission_required = ('lancamentos.can_delete' )
+    permission_required = ('lancamentos.can_delete' )
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
