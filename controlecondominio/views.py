@@ -27,13 +27,13 @@ class criaprestacao(PermissionRequiredMixin,CreateView):
     model = prestacao
     fields = ['mes', 'ano' , 'saldoanterior']
     success_url = reverse_lazy('listaprestacao')
-    permission_required = ('prestacao.can_add' )
+    permission_required = ('controlecondominio.add_prestacao' )
 
 @method_decorator(login_required, name='dispatch')
 class atualizaprestacao(PermissionRequiredMixin,UpdateView):
     model = prestacao
     fields = ['mes', 'ano', 'saldoanterior']
-    permission_required = ('prestacao.can_change' )
+    permission_required = ('controlecondominio.change_prestacao' )
 
     #success_url = reverse_lazy('listaprestacao')
     def get_success_url(self):
@@ -61,13 +61,13 @@ class atualizaprestacao(PermissionRequiredMixin,UpdateView):
 class deleteprestacao(PermissionRequiredMixin,DeleteView):
     model = prestacao
     success_url = reverse_lazy('listaprestacao')
-    permission_required = ('prestacao.can_delete' )
+    permission_required = ('controlecondominio.delete_prestacao' )
 
 @method_decorator(login_required, name='dispatch')
 class crialancamento(PermissionRequiredMixin,CreateView):
     model = lancamentos
     form_class = lancamentosforms
-    permission_required = ('lancamentos.can_add' )
+    permission_required = ('controlecondominio.add_prestacao' )
     #fields = ['data', 'descricao', 'valormoeda']
 
     def get_context_data(self, *args, **kwargs):
@@ -86,7 +86,7 @@ class crialancamento(PermissionRequiredMixin,CreateView):
 class atualizalancamento(PermissionRequiredMixin,UpdateView):
     model = lancamentos
     form_class = lancamentosforms
-    permission_required = ('lancamentos.can_change' )
+    permission_required = ('controlecondominio.change_lancamento' )
     #fields = ['data', 'descricao', 'valormoeda']
 
     def get_context_data(self, *args, **kwargs):
@@ -102,7 +102,7 @@ class atualizalancamento(PermissionRequiredMixin,UpdateView):
 class deletelancamento(PermissionRequiredMixin,DeleteView):
     model = lancamentos
     success_url = reverse_lazy('listaprestacao')
-    permission_required = ('lancamentos.can_delete' )
+    permission_required = ('controlecondominio.delete_lancamentos' )
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
