@@ -3,7 +3,7 @@
   {% csrf_token %}
   <div class="row">
     <div class='col-12' align="center">
-      {{ form|crispy }}
+      {% crispy form %}
     </div>
   </div>
   </div>
