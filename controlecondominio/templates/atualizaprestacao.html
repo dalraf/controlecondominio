@@ -42,6 +42,10 @@
                 <h5>Lançamentos</h5>
             </div>
             <div class="card-body table-responsive">
+                    {% if perms.controlecondominio.change_prestacao %}
+                    <a class="btn btn-primary" role="button"
+                        href="{% url 'crialancamento' prestacao  %}">Adicionar lançamento</a>
+                    {% endif %}
                 <table class="table table-striped table-hover table-condensed"">
                     <thead>
                         <tr>
@@ -49,11 +53,7 @@
                     <th style="text-align:center">Data</th>
                     <th style="text-align:center">Descrição</th>
                     <th style="text-align:center">Valor</th>
-                    <th style="text-align:center"> 
-                        {% if perms.controlecondominio.change_prestacao %}
-                        <a class="btn btn-primary" role="button"
-                            href="{% url 'crialancamento' prestacao  %}">Adicionar lançamento</a></th>
-                        {% endif %}
+                    <th style="text-align:center"></th>
                     </tr>
                     </thead>
                     <tbody>
