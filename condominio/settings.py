@@ -40,8 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'controlecondominio',
     'bootstrap4',
+    'crispy_forms',
     'pwa'
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 PWA_APP_NAME = 'Controle de condomínio'
 PWA_APP_DESCRIPTION = "Controle financeiro de condomínio"
@@ -58,11 +61,6 @@ PWA_APP_SPLASH_SCREEN = [
 'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
 }
 ]
-
-
-BOOTSTRAP4 = {
-    "theme_url": "https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sandstone/bootstrap.min.css"
-}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

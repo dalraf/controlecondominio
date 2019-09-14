@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content %}{% load bootstrap4 %}{% bootstrap_messages %} {{ form.media }}
+{% extends 'base.html' %} {% block content %}{% load crispy_forms_tags %}{{ form.media }}
 <form method="post" class="form" enctype="multipart/form-data">
     <div class="row">
         {% csrf_token %}

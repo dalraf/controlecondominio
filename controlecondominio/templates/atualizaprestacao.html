@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content %}{% load bootstrap4 %}{% bootstrap_messages %} {{ form.media }}
+{% extends 'base.html' %}{% block content %}{% load crispy_forms_tags %}{{ form.media }}
 <div class="row" align="center">
     <div class='col-12'>
         <div class="card">
@@ -11,7 +11,7 @@
                     <div class="row" align="center">
                         {% csrf_token %}
                         <div class='col-12'>
-                            {% bootstrap_form form show_label=False%}
+                            {{ form|crispy }}
                         </div>
                     </div>
                     <div class="row" align="center">
