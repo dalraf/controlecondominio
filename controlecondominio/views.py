@@ -30,10 +30,10 @@ class criaprestacao(PermissionRequiredMixin,CreateView):
     permission_required = ('controlecondominio.add_prestacao' )
 
 @method_decorator(login_required, name='dispatch')
-class atualizaprestacao(PermissionRequiredMixin,UpdateView):
+class atualizaprestacao(UpdateView):
     model = prestacao
     fields = ['mes', 'ano', 'saldoanterior']
-    permission_required = ('controlecondominio.change_prestacao' )
+    #permission_required = ('controlecondominio.change_prestacao' )
 
     #success_url = reverse_lazy('listaprestacao')
     def get_success_url(self):
