@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}{% load bootstrap4 %}{% bootstrap_messages %} {{ form.media }}
 <form method="post" class="form" enctype="multipart/form-data">
-    <div class="row">
+    <div class="row"  align="center">
         {% csrf_token %}
             <div class='col-12' align="center">
                 {% bootstrap_form form show_label=False%}
