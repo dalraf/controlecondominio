@@ -1,5 +1,5 @@
 from django.urls import path
-from controlecondominio.views import *
+from controlecondominio.views import atualizalancamento,atualizaprestacao, crialancamento, deletelancamento, deleteprestacao, listaprestacao, criaprestacao, index
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
