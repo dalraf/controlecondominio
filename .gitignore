@@ -2,3 +2,7 @@
 *.pyc
 staticfiles
 controlecondominio/migrations/*
+Pipfile
+Pipfile.lock
+settings.json
+
